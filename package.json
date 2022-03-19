@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@angular/cli": "^13.3.0",
-    "@angular/core": "8.2.14",
+    "@angular/core": "9.1.13",
     "amdefine": "^1.0.1",
     "body-parser": "~1.19.2",
     "cookie-parser": "~1.4.6",
@@ -28,8 +28,9 @@
     "rxjs": "^6.4.0",
     "serve-favicon": "^2.5.0",
     "shortid": "^2.2.16",
+    "tslib": "^1.10.0",
     "yargs": "^17.3.1",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "bower": "^1.8.14",
