@@ -4,3 +4,4 @@ public/vendor
 config.json
 .env
 .config
+yarn.lock
