@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'maintenance') {
 
 var mongoAddress = app.get('db');
 mongoose.connect(mongoAddress, {
-    useMongoClient: true,
+    // useMongoClient: true,
 });
 
 var db = mongoose.connection;

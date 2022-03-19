@@ -3,11 +3,11 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
-var sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 var notify = require('gulp-notify');
 var templateCache = require('gulp-angular-templatecache');
 
-gulp.task('js', function () {
+gulp.task('js', function (cb) {
     gulp.src(['public/js/**/*.js'])
     .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
@@ -17,11 +17,12 @@ gulp.task('js', function () {
         }))
         .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(notify("Javascript compiled!"))
     .pipe(gulp.dest('public/build'))
+    .pipe(notify({"title":"gulp status","message":"Javascript compiled!"}))
+    .on('end', cb)
 });
 
-gulp.task('sass', function(){
+gulp.task('sass', function(cb){
     gulp.src('public/scss/*.scss')
     .pipe(sourcemaps.init())
         .pipe(sass({outputStyle:'compressed'}))
@@ -29,22 +30,24 @@ gulp.task('sass', function(){
             return error.message;
         }))
     .pipe(sourcemaps.write('.'))
-    .pipe(notify("CSS compiled!"))
+    .pipe(notify({"title":"gulp status","message":"CSS compiled!", "sound": "Pop" }))
     .pipe(gulp.dest('public/css'))
+    .on('end', cb)
 });
 
-gulp.task('templates', function(){
+gulp.task('templates', function(cb){
     gulp.src('public/templates/**/*.html')
         .pipe(templateCache({
             module : 'rallly',
             root : 'templates'
         }))
-        .pipe(notify("Templates compiled!"))
         .pipe(gulp.dest('public/js'))
+        .pipe(notify({"title":"gulp status","message":"Templates compiled!"}))
+        .on('end', cb)
 });
 
-gulp.task('watch', ['js','sass'], function () {
+gulp.task('watch', gulp.series(['js','sass']), function () {
     gulp.watch('public/scss/**/*.scss', ['sass'])
     gulp.watch('public/templates/**/*.html', ['templates'])
-    gulp.watch('public/js/**/*.js', ['js'])
+    gulp.watch('public/js/**/*.js', ['js']);
 });
