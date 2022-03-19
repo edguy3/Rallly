@@ -61,7 +61,7 @@ angular.module('rallly')
             var datesCount = [];
 
             scope.event.$promise.then(function(event){
-                var examplesNames = ['John Example', 'Jane Specimen','Mark Instance', 'Mary Case'];
+                const examplesNames = ['Calico Jack', 'Pegleg Pete',  'Anne Bonny', 'William Kidd'];
                 var examples = [];
                 for (var i = 0; i < examplesNames.length; i++){
                     var example = { name : examplesNames[i] };

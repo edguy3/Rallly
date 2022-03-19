@@ -31,10 +31,11 @@
                 <span ng-hide="editMode" class="name editable" ng-click="editMode = true && !event.isClosed; pollCtrl.edit(participant)">{{participant.name}}</span>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <img src="/images/tick@2x.png"  width="16" ng-hide="editMode" ng-if="participant.votes[$index]" />
-                <img src="/images/nope@2x.png" width="8" ng-hide="editMode" ng-if="!participant.votes[$index]" />
-                <input ng-model="participant.votes[$index]" ng-show="editMode" ng-false-value="false" type="checkbox" />
-                <div class="overlay" ng-show="editMode" ng-click="participant.votes[$index] = !participant.votes[$index]"></div>
+                <img src="/images/question.png?34"  width="16" ng-if="!participant.votes[$index]" />
+                <img src="/images/nope@2x.png"  width="16"  ng-if="participant.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"  width="16"  ng-if="participant.votes[$index] === 2" />
+                <img src="/images/heart.png?3"  width="16"  ng-if="participant.votes[$index] === 3" />
+                <div class="overlay" ng-show="editMode" ng-click="participant.votes[$index] = (((participant.votes[$index] || 0) + 1) % 4) "></div>
             </div>
             <div class="cell action-cell" ng-hide="event.isClosed">
                 <button type="button" ng-hide="editMode" ng-click="editMode = true; pollCtrl.edit(participant)" class="btn hover">Edit</button>
@@ -53,8 +54,10 @@
                 <span class="name">{{example.name}}</span>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <img src="/images/tick@2x.png"  width="16" ng-if="example.votes[$index]" />
-                <img src="/images/nope@2x.png" width="8" ng-if="!example.votes[$index]" />
+                <img src="/images/question.png" width="8" ng-if="!example.votes[$index]" />
+                <img src="/images/nope@2x.png"  width="16" ng-if="example.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"  width="16" ng-if="example.votes[$index] === 2" />
+                <img src="/images/heart.png?3"  width="16" ng-if="example.votes[$index] === 3" />
             </div>
             <div class="cell action-cell">
 
@@ -72,11 +75,14 @@
                 <span class="avatar style-{{participant.style}}">
                     <img src="/images/user.png" width="11" />
                 </span>
-                <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Your name..." ng-model="participant.name" required value="participant.name"/>
+                <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Enter name, then click" ng-model="participant.name" required value="participant.name"/>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <input ng-model="participant.votes[$index]" ng-false-value="false" type="checkbox" />
-                <div class="overlay" ng-click="participant.votes[$index] = !participant.votes[$index]"></div>
+                <img src="/images/question.png?34"  width="16" n-hide="editMode" ng-if="!participant.votes[$index]" />
+                <img src="/images/nope@2x.png"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 2" />
+                <img src="/images/heart.png?3"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 3" />
+                <div class="overlay" ng-click="participant.votes[$index] = (((participant.votes[$index] || 0) + 1) % 4) "></div>
             </div>
             <div class="cell action-cell">
                 <button type="submit" ng-class="{ 'animated shake' : formnew.$submitted && formnew.$invalid  }" class="btn">Save</button>

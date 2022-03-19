@@ -47,7 +47,7 @@ var EventSchema = new Schema({
     participants : [{
         id : Schema.Types.ObjectId,
         name : String,
-        votes : [Boolean]
+        votes : [Number]
     }],
     isClosed : {
         type : Boolean,

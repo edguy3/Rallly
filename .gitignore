@@ -5,3 +5,4 @@ config.json
 .env
 .config
 yarn.lock
+.DS_Store

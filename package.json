@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=rallly nodemon ./bin/www",
+    "start": "DEBUG=rallly nodemon ./bin/www && kill $!",
     "postinstall": "bower install",
     "installation": "npm i -q && npm run config -- -f",
     "config": "node install.js",
     "prestart": "npm run config",
+    "build": "gulp",
+    "watch": "gulp watch",
+    "clean": "rm -fr public/(js|css|build)",
     "test": ""
   },
   "dependencies": {
@@ -25,17 +28,18 @@
     "numeral": "^2.0.6",
     "prompt": "^1.2.2",
     "pug": "^3.0.2",
-    "rxjs": "^6.4.0",
+    "rxjs": "^7.5.5",
     "serve-favicon": "^2.5.0",
     "shortid": "^2.2.16",
-    "tslib": "^1.10.0",
+    "tslib": "^2.3.1",
     "yargs": "^17.3.1",
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "bower": "^1.8.14",
     "gulp": "^4.0.2",
-    "gulp-angular-templatecache": "^1.5.0",
+    "gulp-angular-templatecache": "^2.1.1",
+    "gulp-batch": "^1.0.5",
     "gulp-concat": "^2.6.1",
     "gulp-ng-annotate": "^2.1.0",
     "gulp-notify": "^4.0.0",
