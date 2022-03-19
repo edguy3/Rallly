@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+      // "esModuleInterop": true,
+      "lib": [ "es5", "es6", "es7",
+        "es2015", "es2016",
+        "es2017", "es2018",
+        "esnext" ],
+      "target": "es2017",
+      "module": "commonjs",
+      // "sourceMap": true,   // enable for debug.  not in prod
+      // "target": "es2017",
+      "outDir": "./dist",
+      "baseUrl": "./src",
+      "alwaysStrict": true,
+      "noImplicitAny": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+
+      "declaration": true,
+      "declarationMap": true,
+      "inlineSourceMap": true,
+      "inlineSources": true,
+
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "typeRoots": ["./node_modules/@types"]
+      // "esModuleInterop": true,
+    },
+    "include": [
+      "api/**/*.js",
+      "bin/**/*.js",
+      "config/**/*.js",
+      "helpers/**/*.js",
+      "*.js",
+    ],
+    // "exclude": ["src/tests/*", "node_modules"]
+    "exclude": ["node_modules"]
+  }
