@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var debug = require('debug')('rallly');
 var app = require('../app');
+console.log('Starting...')
 
 // Server is restricted to listen to localhost (127.0.0.1)
 // to disable direct requests to the application

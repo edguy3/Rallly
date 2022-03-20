@@ -9,7 +9,7 @@
       "module": "commonjs",
       // "sourceMap": true,   // enable for debug.  not in prod
       // "target": "es2017",
-      "outDir": "./dist",
+      "outDir": "./public",
       "baseUrl": "./src",
       "alwaysStrict": true,
       "noImplicitAny": true,

@@ -1,4 +1,5 @@
 <div class="poll-header">
+
     <div class="header participants-header">
         {{event.participants.length}} participants
     </div>
@@ -31,10 +32,10 @@
                 <span ng-hide="editMode" class="name editable" ng-click="editMode = true && !event.isClosed; pollCtrl.edit(participant)">{{participant.name}}</span>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <img src="/images/question.png?34"  width="16" ng-if="!participant.votes[$index]" />
-                <img src="/images/nope@2x.png"  width="16"  ng-if="participant.votes[$index] === 1" />
-                <img src="/images/tick@2x.png"  width="16"  ng-if="participant.votes[$index] === 2" />
-                <img src="/images/heart.png?3"  width="16"  ng-if="participant.votes[$index] === 3" />
+                <img src="/images/question.png"     title="Dont Know"   width="16"  ng-if="!participant.votes[$index]" />
+                <img src="/images/nope@2x.png"      title="Cannot go"   width="16"  ng-if="participant.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"      title="Can Go"      width="16"  ng-if="participant.votes[$index] === 2" />
+                <img src="/images/heart.png?3"      title="Preferred"   width="16"  ng-if="participant.votes[$index] === 3" />
                 <div class="overlay" ng-show="editMode" ng-click="participant.votes[$index] = (((participant.votes[$index] || 0) + 1) % 4) "></div>
             </div>
             <div class="cell action-cell" ng-hide="event.isClosed">
@@ -54,10 +55,10 @@
                 <span class="name">{{example.name}}</span>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <img src="/images/question.png" width="8" ng-if="!example.votes[$index]" />
-                <img src="/images/nope@2x.png"  width="16" ng-if="example.votes[$index] === 1" />
-                <img src="/images/tick@2x.png"  width="16" ng-if="example.votes[$index] === 2" />
-                <img src="/images/heart.png?3"  width="16" ng-if="example.votes[$index] === 3" />
+                <img src="/images/question.png?34"  title="Dont Know"   width="16"  ng-if="!example.votes[$index]" />
+                <img src="/images/nope@2x.png"      title="Cannot go"   width="16"  ng-if="example.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"      title="Can Go"      width="16"  ng-if="example.votes[$index] === 2" />
+                <img src="/images/heart.png?3"      title="Preferred"   width="16"  ng-if="example.votes[$index] === 3" />
             </div>
             <div class="cell action-cell">
 
@@ -75,13 +76,13 @@
                 <span class="avatar style-{{participant.style}}">
                     <img src="/images/user.png" width="11" />
                 </span>
-                <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Enter name, then click" ng-model="participant.name" required value="participant.name"/>
+                <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Enter name, then click '?'" ng-model="participant.name" required value="participant.name"/>
             </div>
             <div class="cell vote-cell" ng-repeat="date in event.dates">
-                <img src="/images/question.png?34"  width="16" n-hide="editMode" ng-if="!participant.votes[$index]" />
-                <img src="/images/nope@2x.png"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 1" />
-                <img src="/images/tick@2x.png"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 2" />
-                <img src="/images/heart.png?3"  width="16" n-hide="editMode" ng-if="participant.votes[$index] === 3" />
+                <img src="/images/question.png"     title="Dont Know"   width="16"  ng-if="!participant.votes[$index]" />
+                <img src="/images/nope@2x.png"      title="Cannot go"   width="16"  ng-if="participant.votes[$index] === 1" />
+                <img src="/images/tick@2x.png"      title="Can Go"      width="16"  ng-if="participant.votes[$index] === 2" />
+                <img src="/images/heart.png?3"      title="Preferred"   width="16"  ng-if="participant.votes[$index] === 3" />
                 <div class="overlay" ng-click="participant.votes[$index] = (((participant.votes[$index] || 0) + 1) % 4) "></div>
             </div>
             <div class="cell action-cell">
@@ -89,4 +90,10 @@
             </div>
         </form>
     </div>
+</div>
+<div class="icon-header">
+    <img src="/images/question.png"     width="16" /> = Don't Know &nbsp;&nbsp;&nbsp;
+    <img src="/images/nope@2x.png"      width="16" /> = Cannot go&nbsp;&nbsp;&nbsp;
+    <img src="/images/tick@2x.png"      width="16" /> = Can Go&nbsp;&nbsp;&nbsp;
+    <img src="/images/heart.png?3"      width="16" /> = Preferred&nbsp;&nbsp;&nbsp;
 </div>

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=rallly nodemon ./bin/www && kill $!",
+    "dev": "DEBUG=rallly nodemon ./bin/www",
+    "start": "node ./bin/www",
     "postinstall": "bower install",
     "installation": "npm i -q && npm run config -- -f",
     "config": "node install.js",
     "prestart": "npm run config",
-    "build": "gulp",
+    "build": "gulp templates && gulp && yarn postinstall",
     "watch": "gulp watch",
     "clean": "rm -fr public/(js|css|build)",
     "test": ""
