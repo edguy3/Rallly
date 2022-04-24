@@ -6,7 +6,7 @@ RUN apk --update add git python2 bash
 WORKDIR /home/node
 
 FROM base as builder
-COPY package.json  bower.json .bowerrc .
+COPY package.json  bower.json .bowerrc ./
 # COPY package-lock.json .
 
 RUN npm install
